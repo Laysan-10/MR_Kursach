@@ -2,6 +2,8 @@ using System.Collections;
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class Get_Tree : MonoBehaviour
 {
@@ -15,19 +17,22 @@ public class Get_Tree : MonoBehaviour
 	// [SerializeField] GameObject _find2;
 	int cost = 30;
 	public bool check = false;
-	
-	public void Activate_Button()//Метод для XRSocketInteractor, SelectEnter
+	GameObject _socket;
+	public void Activate_Button(BaseInteractionEventArgs args)//Метод для XRSocketInteractor, SelectEnter
 	{ 
 		check = true;
 		
 	}
-	public  void Non_Activate_Button()//Метод для XRSocketInteractor, SelectExit
+	public  void Non_Activate_Button(BaseInteractionEventArgs args)//Метод для XRSocketInteractor, SelectExit
 	 {
 	 	check = false;
 	 }
 	 void Start()
 	 {
-		_skript_money = FindFirstObjectByType<Money>();
+		_socket = GameObject.Find("XR_Socket");
+		_socket.GetComponent<XRSocketInteractor>().selectEntered.AddListener(Activate_Button);
+		_socket.GetComponent<XRSocketInteractor>().selectExited.AddListener(Non_Activate_Button);
+        _skript_money = FindFirstObjectByType<Money>();
 	 		Parent_Tree = GameObject.Find("ALLTREE");
 			
 			// _find.GetComponent<TextMeshProUGUI>().text = cost.ToString();
