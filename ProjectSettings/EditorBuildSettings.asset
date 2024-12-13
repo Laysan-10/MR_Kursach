@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Tree_logic.unity
+    guid: e79f2a7136e0b164ba28e1911fef12d0
+  - enabled: 0
+    path: Assets/Scenes/Baloon.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: df25e1450f5453745893ac3b6565786c, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8ba2e338478ce4244a49189e582b3b80, type: 2}
