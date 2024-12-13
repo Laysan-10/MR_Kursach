@@ -1,6 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,25 +10,28 @@ public class Get_Tree : MonoBehaviour
 	GameObject[] _prebaf_mas = new GameObject[100] ;//массив для клонированнфх
 	GameObject Parent_Tree;
 	[SerializeField] Button _forest;
-	[SerializeField]GameObject _find;
-	[SerializeField] GameObject _find2;
+	Money _skript_money;
+	// [SerializeField]GameObject _find;
+	// [SerializeField] GameObject _find2;
 	int cost = 30;
 	public bool check = false;
-	public void Activate_Button()
+	
+	public void Activate_Button()//Метод для XRSocketInteractor, SelectEnter
 	{ 
 		check = true;
 		
 	}
-	public  void Non_Activate_Button()
+	public  void Non_Activate_Button()//Метод для XRSocketInteractor, SelectExit
 	 {
 	 	check = false;
 	 }
 	 void Start()
 	 {
+		_skript_money = FindFirstObjectByType<Money>();
 	 		Parent_Tree = GameObject.Find("ALLTREE");
 			
-			_find.GetComponent<TextMeshProUGUI>().text = cost.ToString();
-			_find2.GetComponent<TextMeshProUGUI>().text = cost.ToString();
+			// _find.GetComponent<TextMeshProUGUI>().text = cost.ToString();
+			// _find2.GetComponent<TextMeshProUGUI>().text = cost.ToString();
 		_tree = Parent_Tree.GetComponentsInChildren<Transform>();
 		_forest.enabled = true;
 	 }
@@ -64,9 +66,8 @@ public class Get_Tree : MonoBehaviour
 
 
 		}
-		cost += 10;//тип получаем деньги за вырубку
-			_find.GetComponent<TextMeshProUGUI>().text = cost.ToString();
-			_find2.GetComponent<TextMeshProUGUI>().text = cost.ToString();
+		_skript_money._tree += 10;//получение дерева
+			
 	}
 
 	 IEnumerator MyCoroutine() // Возвращает string
