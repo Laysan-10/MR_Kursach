@@ -83,7 +83,7 @@ IEnumerator MyCorutine(List<string> name)
 	for(int i = 0; i < name.Count -1; i++)
 	{
 			_text_swipe.GetComponent<TextMeshProUGUI>().text = name[i];
-		yield return new WaitForSeconds(.1f);
+		yield return new WaitForSeconds(5f);
 			
 	}
 			
