@@ -8,7 +8,7 @@ using Unity.XR.CoreUtils;
 public class Money : MonoBehaviour//логика которая отвечает за покупки и
 {     							//за конвертирование ресурсов в деньги
 	public int _cost; //Цена за товар.
-	int _money = 40; //Кол-во денер.
+	public int _money = 40; //Кол-во денер.
 	public int _tree;// Кол-во дерева.
 	int _ruda; //Кол-во камня/руды	
 	 //Области для записи значения кол-ва цены.
