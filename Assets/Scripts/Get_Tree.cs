@@ -21,6 +21,8 @@ public class Get_Tree : MonoBehaviour
 	public void Activate_Button(BaseInteractionEventArgs args)//Метод для XRSocketInteractor, SelectEnter
 	{ 
 		check = true;
+		Debug.Log(args);
+		Debug.Log(args.interactableObject.transform.gameObject.name);
 		
 	}
 	public  void Non_Activate_Button(BaseInteractionEventArgs args)//Метод для XRSocketInteractor, SelectExit
