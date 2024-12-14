@@ -32,7 +32,7 @@ public class Get_Tree : MonoBehaviour
 		_socket = GameObject.Find("XR_Socket");
 		_socket.GetComponent<XRSocketInteractor>().selectEntered.AddListener(Activate_Button);
 		_socket.GetComponent<XRSocketInteractor>().selectExited.AddListener(Non_Activate_Button);
-        _skript_money = FindFirstObjectByType<Money>();
+		_skript_money = FindFirstObjectByType<Money>();
 	 		Parent_Tree = GameObject.Find("ALLTREE");
 			
 			// _find.GetComponent<TextMeshProUGUI>().text = cost.ToString();
@@ -72,6 +72,7 @@ public class Get_Tree : MonoBehaviour
 
 		}
 		_skript_money._tree += 10;//получение дерева
+		_skript_money.Update_Tree_Ruda();
 			
 	}
 

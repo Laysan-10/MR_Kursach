@@ -9,8 +9,8 @@ public class Money : MonoBehaviour//логика которая отвечает
 {     							//за конвертирование ресурсов в деньги
 	public int _cost; //Цена за товар.
 	public int _money = 40; //Кол-во денер.
-	public int _tree;// Кол-во дерева.
-	int _ruda; //Кол-во камня/руды	
+	public int _tree=0;// Кол-во дерева.
+	int _ruda=0; //Кол-во камня/руды	
 	 //Области для записи значения кол-ва цены.
 	[SerializeField]GameObject _find;
 	[SerializeField] GameObject _find2;
@@ -42,18 +42,32 @@ Debug.Log(_spawn.name);
 _ob = Instantiate(_spawn.gameObject, transform.position + new Vector3(0, 0, 0), _spawn.gameObject.transform.rotation);
 }
 public void Convetr_Tree(){
-	_money += 1;
+	if(_tree >= 5)
+	{
+		_money += 1;
 	_tree -= 5;
 	_find.GetComponent<TextMeshProUGUI>().text = _money.ToString();
 	_find2.GetComponent<TextMeshProUGUI>().text = _money.ToString();
 	_find3.GetComponent<TextMeshProUGUI>().text = _tree.ToString();
+	}
+	
 }
 
 public void Convetr_Ruda(){
-	_money += 3;
+	if(_ruda >=5)
+	{
+		_money += 3;
 	_ruda -= 5;
 	_find.GetComponent<TextMeshProUGUI>().text = _money.ToString();
 	_find2.GetComponent<TextMeshProUGUI>().text = _money.ToString();
+	_find4.GetComponent<TextMeshProUGUI>().text = _ruda.ToString();
+	}
+	
+}
+
+public void Update_Tree_Ruda()
+{
+	_find3.GetComponent<TextMeshProUGUI>().text = _tree.ToString();
 	_find4.GetComponent<TextMeshProUGUI>().text = _ruda.ToString();
 }
 }
