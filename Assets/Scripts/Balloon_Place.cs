@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Balloon_Place : MonoBehaviour
 {
@@ -11,22 +12,27 @@ public class Balloon_Place : MonoBehaviour
 	GameObject _time_image;
 	GameObject _start_image;
 	Plane_Movement _skript_plane_movemant;
+	bool _its_end_pos = false; //проверка на то, что это позиция конечная.
 	static int i = 0; //фляг начало/конец движения
+	Money _money;
 	
 	
 	void Start(){
 	//активация сокета
 		_socket_for_ballon = GameObject.Find("XR_Socket_Ballon_Start");
 		_socket_for_ballon.GetComponent<XRSocketInteractor>().enabled = true;
-		
+		_socket_for_ballon.GetComponent<XRSocketInteractor>().selectEntered.AddListener(Not_End_Pos);//если шар не в конце то ложь
 		_skript_plane_movemant = FindFirstObjectByType<Plane_Movement>();
 		
 			//активация сокета
 		_socket_for_ballon_2 = GameObject.Find("XR_Socket_Ballon_End");
 		_socket_for_ballon_2.GetComponent<XRSocketInteractor>().enabled = true;
+		_socket_for_ballon_2.GetComponent<XRSocketInteractor>().selectEntered.AddListener(End_Pos);//если шар на конечной точке, то правда.
 		
 		_start_image = GameObject.Find("START_MOVE_IMG");
 		_start_image.GetComponent<Button>().onClick.AddListener(Ballon_Move);//добавляет событие
+		
+		_money = FindObjectOfType<Money>();
 	}
 void OnTriggerEnter(Collider other)
 {
@@ -51,6 +57,11 @@ void OnTriggerEnter(Collider other)
 		_time_image = GameObject.Find("TIME_IMG");
 		_time_image.GetComponent<Image>().enabled = true;//картинка с часами
 		yield return new 	WaitForSeconds(5);
+		
+		//скрипт Money.
+		_money._ruda+=5;
+		_money.Update_Tree_Ruda();
+		
 		_start_image.GetComponent<Image>().enabled = true;
 		_time_image.GetComponent<Image>().enabled = false;
 		i = 0;
@@ -76,4 +87,14 @@ void OnTriggerEnter(Collider other)
 		_start_image.GetComponent<Image>().enabled = false;
 		
 	}
+	
+	//методы для того чтобы собирать ресурсы с правильного острова
+	public void End_Pos(BaseInteractionEventArgs args){
+		_its_end_pos = true;
+	}
+	public void Not_End_Pos(BaseInteractionEventArgs args){
+		_its_end_pos = false;
+	}
+	
 }
+

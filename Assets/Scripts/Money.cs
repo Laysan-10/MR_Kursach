@@ -10,7 +10,7 @@ public class Money : MonoBehaviour//логика которая отвечает
 	public int _cost; //Цена за товар.
 	public int _money = 40; //Кол-во денер.
 	public int _tree=0;// Кол-во дерева.
-	int _ruda=0; //Кол-во камня/руды	
+	public int _ruda=0; //Кол-во камня/руды	
 	 //Области для записи значения кол-ва цены.
 	[SerializeField]GameObject _find;
 	[SerializeField] GameObject _find2;
@@ -21,23 +21,19 @@ public class Money : MonoBehaviour//логика которая отвечает
 	void Start()
 	{
 		//Запись значений цены в соот. поля.
-		_find.GetComponent<TextMeshProUGUI>().text = _money.ToString();
-			_find2.GetComponent<TextMeshProUGUI>().text = _money.ToString();
+		Update_Tree_Ruda();
 	}		  
-public void Button_Cost(GameObject _button)//для покупки ресурсов
+public void Button_Cost(GameObject _button)//для покупки ресурсов.
 {
-	_cost = Convert.ToInt32(_button.name);//имя кнопки это цена
+	_cost = Convert.ToInt32(_button.name);//имя кнопки это цена.
 	if(_money >= _cost){
-		_money-=_cost;//логическое измененние цены
-		//визуальное изменение цены
-		_find.GetComponent<TextMeshProUGUI>().text = _money.ToString();
-		_find2.GetComponent<TextMeshProUGUI>().text = _money.ToString();
-		_find3.GetComponent<TextMeshProUGUI>().text = _tree.ToString();
-		_find4.GetComponent<TextMeshProUGUI>().text = _ruda.ToString();
+		_money-=_cost;//логическое измененние цены.
+		//визуальное изменение цены.
+		Update_Tree_Ruda();
 		Spawn(_button.	transform.GetChild(0));
 	}
 }
-void Spawn(Transform _spawn){//метод для клонирования объектов
+void Spawn(Transform _spawn){//метод для клонирования объектов.
 Debug.Log(_spawn.name);
 _ob = Instantiate(_spawn.gameObject, transform.position + new Vector3(0, 0, 0), _spawn.gameObject.transform.rotation);
 }
@@ -46,9 +42,7 @@ public void Convetr_Tree(){
 	{
 		_money += 1;
 	_tree -= 5;
-	_find.GetComponent<TextMeshProUGUI>().text = _money.ToString();
-	_find2.GetComponent<TextMeshProUGUI>().text = _money.ToString();
-	_find3.GetComponent<TextMeshProUGUI>().text = _tree.ToString();
+Update_Tree_Ruda();
 	}
 	
 }
@@ -58,16 +52,18 @@ public void Convetr_Ruda(){
 	{
 		_money += 3;
 	_ruda -= 5;
-	_find.GetComponent<TextMeshProUGUI>().text = _money.ToString();
-	_find2.GetComponent<TextMeshProUGUI>().text = _money.ToString();
-	_find4.GetComponent<TextMeshProUGUI>().text = _ruda.ToString();
+	Update_Tree_Ruda();
 	}
 	
 }
 
-public void Update_Tree_Ruda()
+public void Update_Tree_Ruda()//для того чтобы обновлять инфу о кол-ве ресурсов.
 {
+	_find.GetComponent<TextMeshProUGUI>().text = _money.ToString();
+	_find2.GetComponent<TextMeshProUGUI>().text = _money.ToString();
 	_find3.GetComponent<TextMeshProUGUI>().text = _tree.ToString();
 	_find4.GetComponent<TextMeshProUGUI>().text = _ruda.ToString();
 }
+
+
 }
