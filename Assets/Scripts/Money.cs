@@ -7,9 +7,38 @@ using Unity.XR.CoreUtils;
 
 public class Money : MonoBehaviour//логика которая отвечает за покупки и
 {     							//за конвертирование ресурсов в деньги
-	public int _cost; //Цена за товар.
-	public int _money = 40; //Кол-во денер.
-	public int _tree=0;// Кол-во дерева.
+	public int _cost;//Цена за товар.
+	
+	public int _money 
+	{
+		get{return _money;}
+		set
+		{
+			_money = value;
+			Update_Tree_Ruda();
+			if(Play_Logic._metod_3)
+			{
+				_play_logic.Show_Money_Tree(1);
+			}//вызывает метод, которое вызывает событие при опр цене.
+			
+		}
+		
+	} //Кол-во денер.
+	public int _tree
+	{
+		get{return _tree;}
+		set
+		{
+			_tree = value;
+			
+				Update_Tree_Ruda();
+			if(Play_Logic._metod_3)
+			{
+				_play_logic.Show_Money_Tree(0);
+			}//вызывает метод, которое вызывает событие при опр цене.
+			
+		}
+	}// Кол-во дерева.
 	public int _ruda=0; //Кол-во камня/руды	
 	 //Области для записи значения кол-ва цены.
 	[SerializeField]GameObject _find;
@@ -17,11 +46,14 @@ public class Money : MonoBehaviour//логика которая отвечает
 	[SerializeField] GameObject _find3;
 	[SerializeField] GameObject _find4;
 	GameObject _ob;
+	Play_Logic _play_logic;
 	
 	void Start()
 	{
 		//Запись значений цены в соот. поля.
 		Update_Tree_Ruda();
+		_money = 40;
+		_tree = 0;
 	}		  
 public void Button_Cost(GameObject _button)//для покупки ресурсов.
 {
