@@ -19,11 +19,7 @@ public class SpawnObject : MonoBehaviour
 		check = true;
 	}
 
-	void Update()
-	{
-		// { if(check){_ob.transform.rotation = new Quaternion(x, y, z, d);}
-
-	} 
+	
 	public void Socket(GameObject _object)
 	{
 		_object.transform.position = transform.position;

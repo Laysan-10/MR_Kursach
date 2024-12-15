@@ -34,17 +34,17 @@ Transform end_pos;
 
 	void Update()
 	{
-		if(move_ballon){
-	_end.gameObject.transform.position = xrRayInteractor.transform.position + xrRayInteractor.transform.forward * 20;
-	transform.position=Vector3.MoveTowards(transform.position,_end.gameObject.transform.position,speed/100);
-if(Vector3.Distance(transform.position, _end.gameObject.transform.position) >= 10)
-{
-	speed = Mathf.Lerp(min_speed, max_speed, 1.5f);
-}
+// 		if(move_ballon){
+// 	_end.gameObject.transform.position = xrRayInteractor.transform.position + xrRayInteractor.transform.forward * 20;
+// 	transform.position=Vector3.MoveTowards(transform.position,_end.gameObject.transform.position,speed/100);
+// if(Vector3.Distance(transform.position, _end.gameObject.transform.position) >= 10)
+// {
+// 	speed = Mathf.Lerp(min_speed, max_speed, 1.5f);
+// }
 	
-else{	
-	speed = Mathf.Lerp(max_speed, min_speed, 1.5f);
-	}}
+// else{	
+// 	speed = Mathf.Lerp(max_speed, min_speed, 1.5f);
+// 	}}
 		
 	
 }

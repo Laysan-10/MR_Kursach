@@ -63,7 +63,9 @@ public class Show_Island : MonoBehaviour//прописать логику диа
 
 		//индекс острова, для вызова методы
 		Debug.Log(_island_index);
-
+		foreach(var g in gameObjects_island){
+			Debug.Log(g.name);
+		}
 
 		if (All_Island.TryGetValue(_island_index, out sh_island method))//вызов метода
 		{
@@ -76,6 +78,7 @@ public class Show_Island : MonoBehaviour//прописать логику диа
 			Debug.LogWarning($"Method with key {_island_index} not found.");
 		}
 		_island_index +=1;
+		
 
 	}
 	public void House(string name)//когда пользователь нажимает на начать, то появляется остров и остальная логика для показа ui
@@ -95,10 +98,6 @@ public class Show_Island : MonoBehaviour//прописать логику диа
 		
 	}
 	
-	void Update ()
-	{
-		
-	}
 	
 	public void Forest(string name)//реализция логики получения денег
 	{

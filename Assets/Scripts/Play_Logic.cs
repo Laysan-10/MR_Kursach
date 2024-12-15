@@ -29,6 +29,7 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	   public delegate void MyMethodDelegate(List<string> name); 
 	void Method1(){}//сюда заносим метод из другого скрипта
 	void Method2(){}
+	void Method3(){}
 
 	public void button_click()//Метод считывает нажатие кнопки.
 	{
@@ -49,6 +50,7 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 		{
 			{ 1, _Islans.Show_Logic},//для того чтобы показывать острова и менять текст.
 			{ 2, Swipe_text},//для того чтобы только менять текст.
+			{3, Get_Name},
 			
 		};
 		
@@ -96,12 +98,13 @@ void Get_Name(List<string> name)//метод вызывается при наж�
 {
 	_metod_3 = true;
 	text_for_metod_3 = name; 
+	_button_swipe.SetActive(false);	
 }
 
    public  void Show_Money_Tree(int i){//метод который вызывается при изменении значения, 
 									// в зависимости от int переопределяет список
 	
-	GameObject _ballon_UI = GameObject.Find("Ballon");
+	GameObject _ballon_UI = GameObject.Find("Ballon_System");
 	_image_color = _ballon_UI.GetComponentInParent<Image>().color;
 	_ballon_UI.GetComponentInParent<Image>().color = Color.green;
 	_ballon_UI.GetComponentInParent<Button>().onClick.AddListener(Image_Color);
@@ -117,5 +120,6 @@ void Get_Name(List<string> name)//метод вызывается при наж�
    void Image_Color(){//возвращает цвет кнопки в исходное.
 	GameObject _ballon_UI = GameObject.Find("Ballon");
 	_ballon_UI.GetComponentInParent<Image>().color = _image_color;
+	Debug.Log("Spawn_BalLon");
    }
 }

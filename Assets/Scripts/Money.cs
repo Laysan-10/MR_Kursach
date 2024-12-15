@@ -8,13 +8,15 @@ using Unity.XR.CoreUtils;
 public class Money : MonoBehaviour//логика которая отвечает за покупки и
 {     							//за конвертирование ресурсов в деньги
 	public int _cost;//Цена за товар.
-	
-	public int _money 
+	public int _money;
+	public int _tree;
+	public int _Money 
 	{
 		get{return _money;}
 		set
 		{
 			_money = value;
+			Debug.Log("Update_Money");
 			Update_Tree_Ruda();
 			if(Play_Logic._metod_3)
 			{
@@ -24,12 +26,13 @@ public class Money : MonoBehaviour//логика которая отвечает
 		}
 		
 	} //Кол-во денер.
-	public int _tree
+	public int _Tree
 	{
 		get{return _tree;}
 		set
 		{
 			_tree = value;
+			Debug.Log("Update_Tree");
 			
 				Update_Tree_Ruda();
 			if(Play_Logic._metod_3)
@@ -50,10 +53,11 @@ public class Money : MonoBehaviour//логика которая отвечает
 	
 	void Start()
 	{
-		//Запись значений цены в соот. поля.
-		Update_Tree_Ruda();
 		_money = 40;
 		_tree = 0;
+		//Запись значений цены в соот. поля.
+		Update_Tree_Ruda();
+		
 	}		  
 public void Button_Cost(GameObject _button)//для покупки ресурсов.
 {
