@@ -10,6 +10,7 @@ public class SpawnObject : MonoBehaviour
 	public Vector3 x;
 	public int y;
 	GameObject _xr;
+	
 	bool check = false;
 	[SerializeField] XRSocketInteractor socketInteractor;
 
@@ -24,7 +25,21 @@ public class SpawnObject : MonoBehaviour
 	{
 		_object.transform.position = transform.position;
 	}
+public void Invoke_Gameobject(GameObject _onscene){
+	
+_onscene.SetActive(true);
 
+if(_onscene.name == "air_balloon_red" && GameObject.Find("Snow") == true)
+{
+	GameObject.Find("XR_Socket_Ballon_Start").GetComponent<MeshRenderer>().enabled = true;
+	GameObject.Find("XR_Socket_Ballon_End").GetComponent<MeshRenderer>().enabled = true;
+	
+	GameObject.Find("XR_Socket_Ballon_Start").GetComponent<Balloon_Place>().Start_For_Spawn();
+	GameObject.Find("XR_Socket_Ballon_End").GetComponent<Balloon_Place>().Start_For_Spawn();
+	
+}
+
+}
  
 
 	// private void OnEnable()

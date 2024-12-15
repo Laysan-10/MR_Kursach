@@ -20,7 +20,7 @@ public class Money : MonoBehaviour//логика которая отвечает
 					 if(Play_Logic._metod_3 && value >= 20)
 			{
 				// Debug.Log("Money - Show_Money_Tree(0)");
-				_play_logic.Show_Money_Tree(0);
+				_play_logic.Show_Money_Tree(1);
 			}//вызывает метод, которое вызывает событие при опр цене.
 			}
 		}
@@ -66,12 +66,13 @@ public class Money : MonoBehaviour//логика которая отвечает
 public void Button_Cost(GameObject _button)//для покупки ресурсов.
 {
 	_cost = Convert.ToInt32(_button.name);//имя кнопки это цена.
-	if(_money >= _cost){
-		_money-=_cost;//логическое измененние цены.
-		//визуальное изменение цены.
-		Update_Tree_Ruda();
-		Spawn(_button.	transform.GetChild(0));
-	}
+	Debug.Log(_cost);
+	// if(_money >= _cost){
+	// 	_money-=_cost;//логическое измененние цены.
+	// 	//визуальное изменение цены.
+	// 	Update_Tree_Ruda();
+	// 	Spawn(_button.	transform.GetChild(0));
+	// }
 }
 void Spawn(Transform _spawn){//метод для клонирования объектов.
 Debug.Log(_spawn.name);
