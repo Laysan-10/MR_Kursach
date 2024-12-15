@@ -26,6 +26,7 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	[SerializeField] Show_Island _Islans;
 	Color _image_color;
 	
+	[SerializeField] GameObject _ballon_UI;
 	   public delegate void MyMethodDelegate(List<string> name); 
 	void Method1(){}//сюда заносим метод из другого скрипта
 	void Method2(){}
@@ -33,7 +34,7 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 
 	public void button_click()//Метод считывает нажатие кнопки.
 	{
-		if(people[i]!= null)
+		if(people.Count > i)
 		{
 			InvokeMethod( people[i].id, people[i].name);
 		
@@ -75,7 +76,7 @@ public void Swipe_text(List<string> name)//метмод под номером 2.
 	
 	_text_swipe= _Islans._textmeshpro;
 	_button_swipe = GameObject.Find("House_Button");
-	_button_swipe.SetActive(false);	
+	_button_swipe.GetComponent<Image>().enabled = false;	
 
 	StartCoroutine(MyCorutine(name));
 }
@@ -90,7 +91,7 @@ IEnumerator MyCorutine(List<string> name)
 			
 	_text_swipe.GetComponent<TextMeshProUGUI>().text = name[name.Count-1];
 		
-	_button_swipe.SetActive(true);
+	_button_swipe.GetComponent<Image>().enabled = true;	
 		
 	
 }
@@ -98,28 +99,31 @@ void Get_Name(List<string> name)//метод вызывается при наж�
 {
 	_metod_3 = true;
 	text_for_metod_3 = name; 
-	_button_swipe.SetActive(false);	
+	_button_swipe.GetComponent<Image>().enabled = false;	
 }
 
    public  void Show_Money_Tree(int i){//метод который вызывается при изменении значения, 
 									// в зависимости от int переопределяет список
 	
-	GameObject _ballon_UI = GameObject.Find("Ballon_System");
-	_image_color = _ballon_UI.GetComponentInParent<Image>().color;
-	_ballon_UI.GetComponentInParent<Image>().color = Color.green;
-	_ballon_UI.GetComponentInParent<Button>().onClick.AddListener(Image_Color);
+	_image_color = _ballon_UI.GetComponent<Image>().color;
+	_ballon_UI.GetComponent<Image>().color = Color.green;
+	_ballon_UI.GetComponent<Button>().onClick.AddListener(Image_Color);
 	
 	if(i == 1)//достаточное кол-во денег
 	{
 		text_for_metod_3.RemoveAt(0); //удаление элемента текста по индексу, которое не предполагает конвертирование в деньги.
-	}
 		Swipe_text(text_for_metod_3);//отображение текста,(первый это то что написано в инспекторе.
 		_metod_3 = false; //теперь этот метод не вызывается при изменении значений.
+	}
+	if(i == 0)
+	{
+		Swipe_text(text_for_metod_3);
+	}
+		
    }
    
    void Image_Color(){//возвращает цвет кнопки в исходное.
-	GameObject _ballon_UI = GameObject.Find("Ballon");
-	_ballon_UI.GetComponentInParent<Image>().color = _image_color;
+	_ballon_UI.GetComponent<Image>().color = _image_color;
 	Debug.Log("Spawn_BalLon");
    }
 }

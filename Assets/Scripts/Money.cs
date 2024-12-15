@@ -8,35 +8,37 @@ using Unity.XR.CoreUtils;
 public class Money : MonoBehaviour//логика которая отвечает за покупки и
 {     							//за конвертирование ресурсов в деньги
 	public int _cost;//Цена за товар.
-	public int _money;
-	public int _tree;
-	public int _Money 
+	public int _Tree;
+	public int _Money ; //Кол-во денер.
+	public int _money
 	{
-		get{return _money;}
-		set
-		{
-			_money = value;
-			Debug.Log("Update_Money");
-			Update_Tree_Ruda();
-			if(Play_Logic._metod_3)
+		get => _Money;
+		set{
+			if(_Money != value){
+					_Money = value;
+					// Debug.Log("Update_Money");	
+					 if(Play_Logic._metod_3 && value >= 20)
 			{
-				_play_logic.Show_Money_Tree(1);
+				// Debug.Log("Money - Show_Money_Tree(0)");
+				_play_logic.Show_Money_Tree(0);
 			}//вызывает метод, которое вызывает событие при опр цене.
-			
+			}
 		}
-		
-	} //Кол-во денер.
-	public int _Tree
+	}
+	
+	public int _tree
 	{
-		get{return _tree;}
+		get => _Tree;
 		set
 		{
-			_tree = value;
-			Debug.Log("Update_Tree");
 			
-				Update_Tree_Ruda();
-			if(Play_Logic._metod_3)
+			if(_Tree != value){
+					_Tree = value;
+					// Debug.Log("Update_Tree");
+			} 
+			 if(Play_Logic._metod_3 && value >= 50)
 			{
+				// Debug.Log("Tree - Show_Money_Tree(0)");
 				_play_logic.Show_Money_Tree(0);
 			}//вызывает метод, которое вызывает событие при опр цене.
 			
@@ -53,8 +55,10 @@ public class Money : MonoBehaviour//логика которая отвечает
 	
 	void Start()
 	{
-		_money = 40;
-		_tree = 0;
+		_play_logic = FindFirstObjectByType<Play_Logic>();
+		_Money = 10;
+		_Tree = 0;
+		
 		//Запись значений цены в соот. поля.
 		Update_Tree_Ruda();
 		
@@ -95,9 +99,9 @@ public void Convetr_Ruda(){
 
 public void Update_Tree_Ruda()//для того чтобы обновлять инфу о кол-ве ресурсов.
 {
-	_find.GetComponent<TextMeshProUGUI>().text = _money.ToString();
-	_find2.GetComponent<TextMeshProUGUI>().text = _money.ToString();
-	_find3.GetComponent<TextMeshProUGUI>().text = _tree.ToString();
+	_find.GetComponent<TextMeshProUGUI>().text = _Money.ToString();
+	_find2.GetComponent<TextMeshProUGUI>().text = _Money.ToString();
+	_find3.GetComponent<TextMeshProUGUI>().text = _Tree.ToString();
 	_find4.GetComponent<TextMeshProUGUI>().text = _ruda.ToString();
 }
 

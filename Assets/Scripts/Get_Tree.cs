@@ -67,7 +67,8 @@ public class Get_Tree : MonoBehaviour
 
 			}
 			
-			Debug.Log("Wait....");_forest.enabled=false;
+			// Debug.Log("Wait....");
+			_forest.GetComponent<Image>().enabled=false;
 			StartCoroutine(MyCoroutine());
 			
 
@@ -83,7 +84,7 @@ public class Get_Tree : MonoBehaviour
 
 	   yield return new WaitForSeconds(5f);
 	   Tree_Del(_tree);
-	   _forest.enabled=true;
+	   _forest.GetComponent<Image>().enabled=true;
    }
 
 	//можно сделать по таймеру

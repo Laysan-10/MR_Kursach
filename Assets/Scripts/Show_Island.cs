@@ -33,7 +33,7 @@ public class Show_Island : MonoBehaviour//прописать логику диа
 			{ 1, House},
 			{ 2,  Forest},//заполнить все массивы который, вызываются последовательно
 
-			{ 3, Sand_city },
+			{ 3, Snow_city },
 			{ 4, Sand_city },
 			{ 5, City },
 
@@ -62,10 +62,10 @@ public class Show_Island : MonoBehaviour//прописать логику диа
 	 {
 
 		//индекс острова, для вызова методы
-		Debug.Log(_island_index);
-		foreach(var g in gameObjects_island){
-			Debug.Log(g.name);
-		}
+		// Debug.Log(_island_index);
+		// foreach(var g in gameObjects_island){
+		// 	Debug.Log(g.name);
+		// }
 
 		if (All_Island.TryGetValue(_island_index, out sh_island method))//вызов метода
 		{
@@ -126,6 +126,7 @@ _textmeshpro.GetComponent<TextMeshProUGUI>().text = name ;
 	public void Snow_city(string name)
 	{
 	gameObjects_island[_island_index-1].gameObject.SetActive(true);
+	_textmeshpro.GetComponent<TextMeshProUGUI>().text = name ;
 	}
 
 	//вырука лесов, надо добавить доп метод, для кнопки
