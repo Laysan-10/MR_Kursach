@@ -10,6 +10,7 @@ public class Money : MonoBehaviour//логика которая отвечает
 	public int _cost;//Цена за товар.
 	public int _Tree;
 	public int _Money ; //Кол-во денер.
+	public static bool can_buy;
 	public int _money
 	{
 		get => _Money;
@@ -50,11 +51,13 @@ public class Money : MonoBehaviour//логика которая отвечает
 	[SerializeField] GameObject _find2;
 	[SerializeField] GameObject _find3;
 	[SerializeField] GameObject _find4;
+	[SerializeField] GameObject _find5;
 	GameObject _ob;
 	Play_Logic _play_logic;
 	
 	void Start()
 	{
+		can_buy = false;
 		_play_logic = FindFirstObjectByType<Play_Logic>();
 		_Money = 10;
 		_Tree = 0;
@@ -66,13 +69,12 @@ public class Money : MonoBehaviour//логика которая отвечает
 public void Button_Cost(GameObject _button)//для покупки ресурсов.
 {
 	_cost = Convert.ToInt32(_button.name);//имя кнопки это цена.
-	Debug.Log(_cost);
-	// if(_money >= _cost){
-	// 	_money-=_cost;//логическое измененние цены.
-	// 	//визуальное изменение цены.
-	// 	Update_Tree_Ruda();
-	// 	Spawn(_button.	transform.GetChild(0));
-	// }
+	if(_money >= _cost){
+		_money-=_cost;//логическое измененние цены.
+		//визуальное изменение цены.
+		Update_Tree_Ruda();
+		can_buy = true;
+	}
 }
 void Spawn(Transform _spawn){//метод для клонирования объектов.
 Debug.Log(_spawn.name);
@@ -100,9 +102,10 @@ public void Convetr_Ruda(){
 
 public void Update_Tree_Ruda()//для того чтобы обновлять инфу о кол-ве ресурсов.
 {
-	_find.GetComponent<TextMeshProUGUI>().text = _Money.ToString();
-	_find2.GetComponent<TextMeshProUGUI>().text = _Money.ToString();
-	_find3.GetComponent<TextMeshProUGUI>().text = _Tree.ToString();
+	_find.GetComponent<TextMeshProUGUI>().text = _money.ToString();
+	_find2.GetComponent<TextMeshProUGUI>().text = _money.ToString();
+	_find5.GetComponent<TextMeshProUGUI>().text = _money.ToString();
+	_find3.GetComponent<TextMeshProUGUI>().text = _tree.ToString();
 	_find4.GetComponent<TextMeshProUGUI>().text = _ruda.ToString();
 }
 

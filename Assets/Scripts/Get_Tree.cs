@@ -82,7 +82,7 @@ public class Get_Tree : MonoBehaviour
 	 IEnumerator MyCoroutine() // Возвращает string
    {
 
-	   yield return new WaitForSeconds(5f);
+	   yield return new WaitForSeconds(.5f);
 	   Tree_Del(_tree);
 	   _forest.GetComponent<Image>().enabled=true;
    }

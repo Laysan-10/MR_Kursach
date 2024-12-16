@@ -107,6 +107,8 @@ public class Show_Island : MonoBehaviour//прописать логику диа
 		// _button.transform.position = _textmeshpro.transform.position + new Vector3(24, -6, 18);
 		// //реализация роста деревьев
 _textmeshpro.GetComponent<TextMeshProUGUI>().text = name ;
+GameObject XRSocket = GameObject.Find("XR_Socket");
+XRSocket.GetComponent<MeshRenderer>().enabled  = true;
 
 	
 		
@@ -121,11 +123,19 @@ _textmeshpro.GetComponent<TextMeshProUGUI>().text = name ;
 	void Sand_city(string name)
 	{
 		gameObjects_island[_island_index-1].gameObject.SetActive(true);
+		
+		// GameObject ballon = GameObject.Find("60");
+		// ballon .GetComponent<Button>().enabled = true;
+		
 	}
 
 	public void Snow_city(string name)
 	{
 	gameObjects_island[_island_index-1].gameObject.SetActive(true);
+		//если появляется этот остров, то можно купить воздушный шар
+		// GameObject ballon = GameObject.Find("40");
+		// ballon.GetComponent<Button>().enabled = true;
+		
 	_textmeshpro.GetComponent<TextMeshProUGUI>().text = name ;
 	}
 

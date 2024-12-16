@@ -18,7 +18,7 @@ public class Drone_Place : MonoBehaviour
 	bool _isend=false;
 
 	// Start is called before the first frame update
-	void Start_For_Spawn()
+	public void Start_For_Spawn()
 	{
 		_isend=false;
 			_socket_for_drone = GameObject.Find("XR_Socket_Drone_Start");
