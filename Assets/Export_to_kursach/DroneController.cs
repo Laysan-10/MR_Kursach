@@ -14,7 +14,7 @@ public class DroneController : MonoBehaviour
 
 	public Transform rotorTransform1, rotorTransform2, rotorTransform3, rotorTransform4;
 
-	private HelicopterFlyingSystem helicopterFlyingSystem;
+	[SerializeField] HelicopterFlyingSystem helicopterFlyingSystem;
 
 	public bool activated = false;
 
@@ -35,10 +35,12 @@ public class DroneController : MonoBehaviour
 
 	void Start()
 	{
+		Activate();
+			TakeOffOrLand();
 		if (activated)
 			Activate();
 
-		helicopterFlyingSystem = this.GetComponent<HelicopterFlyingSystem>();
+		// helicopterFlyingSystem = this.GetComponent<HelicopterFlyingSystem>();
 
 		screenCenterX = screenCenterX = Screen.width / 2.0f;
 	}
@@ -115,9 +117,9 @@ public class DroneController : MonoBehaviour
 
 	void PCInputControlLogic()
 	{
-		if (_button.m_Pressed)
-			Activate();
-			TakeOffOrLand();
+		// if (_button.m_Pressed)
+		// 	Activate();
+		// 	TakeOffOrLand();
 
 		// Hold down to turn left / right
 		if (_joystic_left.value.x < 0) //кнопка А
