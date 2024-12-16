@@ -105,8 +105,8 @@ namespace FlyingSystem
 
         void Update()
         {
-            // if (enabledFlyingLogic)
-            //     Fly();
+            if (enabledFlyingLogic)
+                Fly();
         }
 
         public void TakeOff()
