@@ -59,7 +59,7 @@ public class Money : MonoBehaviour//логика которая отвечает
 	{
 		can_buy = false;
 		_play_logic = FindFirstObjectByType<Play_Logic>();
-		_Money = 10;
+		_Money = 120;
 		_Tree = 0;
 		
 		//Запись значений цены в соот. поля.
@@ -70,10 +70,11 @@ public void Button_Cost(GameObject _button)//для покупки ресурс�
 {
 	_cost = Convert.ToInt32(_button.name);//имя кнопки это цена.
 	if(_money >= _cost){
-		_money-=_cost;//логическое измененние цены.
+		can_buy = true;
+		// _money-=_cost;//логическое измененние цены.
 		//визуальное изменение цены.
 		Update_Tree_Ruda();
-		can_buy = true;
+		
 	}
 }
 void Spawn(Transform _spawn){//метод для клонирования объектов.

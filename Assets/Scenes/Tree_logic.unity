@@ -4005,6 +4005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: {x: 0, y: 0, z: 0}
   y: 0
+  _money: {fileID: 0}
   socketInteractor: {fileID: 0}
 --- !u!1 &387511513
 GameObject:
@@ -4548,7 +4549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 159967717526656250, guid: e7dc36c0640d7fd4580558a3a6146da9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 159967717526656250, guid: e7dc36c0640d7fd4580558a3a6146da9, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7595,8 +7596,7 @@ MonoBehaviour:
   - {fileID: 252569006}
   - {fileID: 2074141545}
   - {fileID: 1947221257}
-  - {fileID: 1611776924}
-  - {fileID: 1159019989}
+  - {fileID: 1341199015}
   _textmeshpro: {fileID: 0}
   _button: {fileID: 2132897656}
 --- !u!114 &946137282
@@ -7658,6 +7658,19 @@ MonoBehaviour:
       \u0441\u043E\u0431\u0440\u0430\u0442\u044C \u0440\u0443\u0434\u0443!"
     - "\u041E\u043D\u0430 \u043F\u0440\u0438\u043D\u043E\u0441\u0438\u0442 \u0431\u043E\u043B\u044C\u0448\u0435
       \u0434\u0435\u043D\u0435\u0433,\u0447\u0435\u043C \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u0430."
+  - id: 2
+    name:
+    - "\u0427\u0435\u043B\u043E\u0432\u0435\u043A \u043F\u0440\u043E\u0433\u043E\u043B\u043E\u0434\u0430\u043B\u0441\u044F,
+      \u0435\u043C\u0443 \u043D\u0443\u0436\u043D\u043E \u043A\u0443\u043F\u0438\u0442\u044C
+      \u0435\u0434\u0432"
+    - "\u0414\u043B\u044F \u044D\u0442\u043E\u0433\u043E \u043D\u0443\u0436\u043D\u043E
+      \u0441\u043E\u0431\u0440\u0430\u0442\u044C \u0434\u0435\u043D\u0435\u0433 \u0438
+      \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0441\u0442\u0438 \u0434\u0440\u043E\u043D\u0430"
+    - "\"\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043E\u0441\u0442\u0440\u043E\u0432
+      \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0430\""
+  - id: 1
+    name:
+    - 
   textMeshPrefab: {fileID: 0}
   _Islans: {fileID: 946137281}
   _ballon_UI: {fileID: 1272203905}
@@ -9108,7 +9121,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164712528}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -13811,6 +13824,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 252569009}
     m_Modifications:
     - target: {fileID: 1873518593288493262, guid: e8310ee4a18567f43afef149e75b76ed, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873518593288493262, guid: e8310ee4a18567f43afef149e75b76ed, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
       value: 2
       objectReference: {fileID: 0}
@@ -14669,7 +14686,7 @@ PrefabInstance:
     - target: {fileID: 1873518593288493262, guid: e8310ee4a18567f43afef149e75b76ed, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1845463454}
+      objectReference: {fileID: 0}
     - target: {fileID: 1873518593288493262, guid: e8310ee4a18567f43afef149e75b76ed, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -14750,7 +14767,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7930730353603918145, guid: e8310ee4a18567f43afef149e75b76ed, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14760,17 +14778,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3884029843749992854, guid: e8310ee4a18567f43afef149e75b76ed, type: 3}
   m_PrefabInstance: {fileID: 1845463452}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1845463454 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7930730353603918145, guid: e8310ee4a18567f43afef149e75b76ed, type: 3}
-  m_PrefabInstance: {fileID: 1845463452}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347edacd54333ec4982f53cdd87b5b45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1863784220
 GameObject:
   m_ObjectHideFlags: 0
@@ -18037,6 +18044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: {x: 0, y: 0, z: 0}
   y: 0
+  _money: {fileID: 0}
   socketInteractor: {fileID: 0}
 --- !u!33 &482005634011405225
 MeshFilter:
@@ -19761,6 +19769,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3584386156852048139, guid: 29e34450f36b43643a9e7c85829c5dbf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584386156852048139, guid: 29e34450f36b43643a9e7c85829c5dbf, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
       value: 2
       objectReference: {fileID: 0}
@@ -19770,6 +19782,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7297064979898353282, guid: 29e34450f36b43643a9e7c85829c5dbf, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012660983066493692, guid: 29e34450f36b43643a9e7c85829c5dbf, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -21753,6 +21769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: {x: 0, y: 0, z: 0}
   y: 0
+  _money: {fileID: 1962480593}
   socketInteractor: {fileID: 702663168}
 --- !u!114 &9188323268382638252
 MonoBehaviour:
