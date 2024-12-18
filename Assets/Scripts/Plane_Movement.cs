@@ -42,7 +42,7 @@ Transform end_pos;
 		if(xrRayInteractor.enabled == true)
 		{
 			if(move_ballon){
-	_end.gameObject.transform.position = xrRayInteractor.transform.position + xrRayInteractor.transform.forward * 2;
+	//_end.gameObject.transform.position = xrRayInteractor.transform.position + xrRayInteractor.transform.forward * 2;
 	transform.position=Vector3.MoveTowards(transform.position,_end.gameObject.transform.position,speed/100);
 if(Vector3.Distance(transform.position, _end.gameObject.transform.position) >= 10)
 {
@@ -57,7 +57,7 @@ else{
 		else
 		{
 			if(move_ballon){
-	_end.gameObject.transform.position = xrRayInteractor_Hand.transform.position + xrRayInteractor_Hand.transform.forward * 2;
+	//_end.gameObject.transform.position = xrRayInteractor_Hand.transform.position + xrRayInteractor_Hand.transform.forward * 2;
 	transform.position=Vector3.MoveTowards(transform.position,_end.gameObject.transform.position,speed/100);
 if(Vector3.Distance(transform.position, _end.gameObject.transform.position) >= 10)
 {
