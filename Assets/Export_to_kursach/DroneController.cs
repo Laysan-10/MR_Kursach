@@ -132,7 +132,7 @@ public class DroneController : MonoBehaviour
 		if (_button_value_change)
 			Activate();
 			TakeOffOrLand();
-Debug.Log(_joystic_left.value.x);
+// Debug.Log(_joystic_left.value.x);
 		// Hold down to turn left / right
 		if (_joystic_left.value.x < 0) //кнопка А
 		{

@@ -142,8 +142,7 @@ i = 0;
 	}
 	void Update()
 	{
-		Debug.Log(i);
-		Debug.Log(_was_start);
+		
 	}
 }
 

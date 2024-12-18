@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.XR.CoreUtils;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class Money : MonoBehaviour//логика которая отвечает за покупки и
 {     							//за конвертирование ресурсов в деньги
@@ -44,6 +45,7 @@ public class Money : MonoBehaviour//логика которая отвечает
 			}//вызывает метод, которое вызывает событие при опр цене.
 			
 		}
+		
 	}// Кол-во дерева.
 	public int _ruda=0; //Кол-во камня/руды	
 	 //Области для записи значения кол-ва цены.
@@ -52,8 +54,11 @@ public class Money : MonoBehaviour//логика которая отвечает
 	[SerializeField] GameObject _find3;
 	[SerializeField] GameObject _find4;
 	[SerializeField] GameObject _find5;
+	[SerializeField] GameObject _big_shop;
+	[SerializeField] GameObject _all_island;
 	GameObject _ob;
 	Play_Logic _play_logic;
+	GameObject _basket;
 	
 	void Start()
 	{
@@ -111,4 +116,17 @@ public void Update_Tree_Ruda()//для того чтобы обновлять и
 }
 
 
+
+public void Basket_Shop()//отображение магазина и присвоение логики работы по сути нажатие кнопки
+{
+	_all_island.SetActive(false);
+	_big_shop.SetActive(true);
+	_basket = GameObject.Find("Basket_Buy");
+	// _basket.GetComponent<XRSocketInteractor>().selectEntered.AddListener();
 }
+
+
+
+}
+
+

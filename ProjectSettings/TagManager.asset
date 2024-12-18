@@ -6,6 +6,9 @@ TagManager:
   tags:
   - UI
   - Ballon
+  - BUY
+  - END
+  - START
   layers:
   - Default
   - TransparentFX
