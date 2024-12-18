@@ -46,11 +46,11 @@ Transform end_pos;
 	transform.position=Vector3.MoveTowards(transform.position,_end.gameObject.transform.position,speed/100);
 if(Vector3.Distance(transform.position, _end.gameObject.transform.position) >= 10)
 {
-	speed = Mathf.Lerp(min_speed, max_speed, 1.5f);
+	speed = Mathf.Lerp(min_speed/10, max_speed/10, 1.5f);
 }
 	
 else{	
-	speed = Mathf.Lerp(max_speed, min_speed, 1.5f);
+	speed = Mathf.Lerp(max_speed / 10, min_speed / 10, 1.5f);
 	}}
 	
 		}

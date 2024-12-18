@@ -32,8 +32,8 @@ Transform:
   m_GameObject: {fileID: 6623251600007825739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.76, z: 0}
-  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
+  m_LocalPosition: {x: -0.59439, y: 2.7953, z: 0.000025325}
+  m_LocalScale: {x: 0.0152235, y: 0.0152235, z: 0.0152235}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -253,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: {x: 1, y: 1, z: 1}
   y: 2
+  _money: {fileID: 0}
   socketInteractor: {fileID: 0}
 --- !u!64 &1004268246832507750
 MeshCollider:

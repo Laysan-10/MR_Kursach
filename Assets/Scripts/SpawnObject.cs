@@ -41,27 +41,29 @@ public void Invoke_Gameobject(GameObject _onscene){
 if(Money.can_buy)
 {
 	
-	if(_onscene.name == "air_balloon_red" && GameObject.Find("Snow") == true && spawn_ballon_once)
+	if(_onscene.name == "air_balloon_red" && /*GameObject.Find("Snow") == true &&*/ spawn_ballon_once)
 {
 	_money._money-=40;
 	Debug.Log("air_balloon_red");
 	_onscene.SetActive(true);
 	GameObject.Find("XR_Socket_Ballon_Start").GetComponent<MeshRenderer>().enabled = true;
-	GameObject.Find("XR_Socket_Ballon_End").GetComponent<MeshRenderer>().enabled = true;
+	GameObject.Find("XR_Socket_Ballon_End").GetComponent<MeshRenderer>().enabled = true;	
 	
 	GameObject.Find("XR_Socket_Ballon_Start").GetComponent<Balloon_Place>().Start_For_Spawn();
 	GameObject.Find("XR_Socket_Ballon_End").GetComponent<Balloon_Place>().Start_For_Spawn();
-	
+                spawn_ballon_once = false;	
 }
-if(_onscene.name == "DRONE" && GameObject.Find("Shop") == true && spawn_drone_once)
+if(_onscene.name == "DRONE_Spawn" && GameObject.Find("Shop") == true && spawn_drone_once)
 {_money._money-=60;
 	_onscene.SetActive(true);
+				GameObject target = GameObject.Find("DRONE");
+				target.transform.position = _onscene.transform.position;
 	GameObject.Find("XR_Socket_Drone_Start").GetComponent<MeshRenderer>().enabled = true;
 	GameObject.Find("XR_Socket_Drone_End").GetComponent<MeshRenderer>().enabled = true;
-	
-	// GameObject.Find("XR_Socket_Drone_Start").GetComponent<Drone_Place>().Start_For_Spawn();
-	// GameObject.Find("XR_Socket_Drone_End").GetComponent<Drone_Place>().Start_For_Spawn();
-	
+                spawn_drone_once = false;
+    // GameObject.Find("XR_Socket_Drone_Start").GetComponent<Drone_Place>().Start_For_Spawn();
+    // GameObject.Find("XR_Socket_Drone_End").GetComponent<Drone_Place>().Start_For_Spawn();
+
 }
 Money.can_buy = false;
 }
