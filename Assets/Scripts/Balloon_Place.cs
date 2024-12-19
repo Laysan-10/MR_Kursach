@@ -58,8 +58,14 @@ public class Balloon_Place : MonoBehaviour
 	{
 		
 		
-		_skript_plane_movemant._end.GetComponent<MeshRenderer>().enabled = false;
-		_skript_plane_movemant._end_hand.GetComponent<MeshRenderer>().enabled = false;
+		if(_skript_plane_movemant._end != null)
+		{
+			_skript_plane_movemant._end.GetComponent<MeshRenderer>().enabled = false;
+		}
+			else
+			{
+				_skript_plane_movemant._end_hand.GetComponent<MeshRenderer>().enabled = false;
+			}
 		// _socket_for_ballon.GetComponent<XRSocketInteractor>().enabled = true;
 		// _socket_for_ballon_2.GetComponent<XRSocketInteractor>().enabled = true;
 		_start_image.GetComponent<Image>().enabled = false;
@@ -83,9 +89,15 @@ public class Balloon_Place : MonoBehaviour
 	if(i == 0 && _was_start == false)//если это начало движения, то по нажатию кнопки активируетсяы
 	{
 		Debug.Log("Start");
-		
+		if(_skript_plane_movemant._end != null)
+		{
 			_skript_plane_movemant._end.GetComponent<MeshRenderer>().enabled = false;
-		_skript_plane_movemant._end_hand.GetComponent<MeshRenderer>().enabled = false;
+		}
+			else
+			{
+				_skript_plane_movemant._end_hand.GetComponent<MeshRenderer>().enabled = false;
+			}
+		
 			
 		// 	_socket_for_ballon.GetComponent<XRSocketInteractor>().enabled = true;
 		// _socket_for_ballon_2.GetComponent<XRSocketInteractor>().enabled = true;
@@ -106,8 +118,14 @@ public class Balloon_Place : MonoBehaviour
 	
 	void Ballon_Move()//метод для того чтобы продолжить
 	{						//движение машиной с помощью кнопки 
-		_skript_plane_movemant._end.GetComponent<MeshRenderer>().enabled = true;
-		_skript_plane_movemant._end_hand.GetComponent<MeshRenderer>().enabled = true;
+		if(_skript_plane_movemant._end != null)
+		{
+			_skript_plane_movemant._end.GetComponent<MeshRenderer>().enabled = true;
+		}
+			else
+			{
+				_skript_plane_movemant._end_hand.GetComponent<MeshRenderer>().enabled = true;
+			}
 		_start_image.GetComponent<Image>().enabled = false;//нкопка старт
 		_currentsocket.enabled = false;
 		_skript_plane_movemant.move_ballon = true;//возможность перемедвижения шара
