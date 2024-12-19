@@ -13,7 +13,8 @@ public class Show_Island : MonoBehaviour//прописать логику диа
 	public 	GameObject _textmeshpro;
 	public GameObject _button;
 	
-
+GameObject XRSocket;
+GameObject _for_socket;
 	
 	GameObject _human;
  int _island_index = 1;
@@ -107,8 +108,10 @@ public class Show_Island : MonoBehaviour//прописать логику диа
 		// _button.transform.position = _textmeshpro.transform.position + new Vector3(24, -6, 18);
 		// //реализация роста деревьев
 _textmeshpro.GetComponent<TextMeshProUGUI>().text = name ;
-GameObject XRSocket = GameObject.Find("XR_Socket");
+ XRSocket = GameObject.Find("XR_Socket");
 XRSocket.GetComponent<MeshRenderer>().enabled  = true;
+_for_socket =  GameObject.Find("FOR_SOCKET");
+ XRSocket.transform.position = _for_socket.transform.position;
 
 	
 		
@@ -141,6 +144,15 @@ XRSocket.GetComponent<MeshRenderer>().enabled  = true;
 
 	//вырука лесов, надо добавить доп метод, для кнопки
 
-	
+	void Update()
+	{
+		if(XRSocket != null && XRSocket.transform.position != _for_socket.transform.position)
+		{
+			XRSocket.transform.position = _for_socket.transform.position;
+		}
+		{
+			
+		}
+	}
 }
 

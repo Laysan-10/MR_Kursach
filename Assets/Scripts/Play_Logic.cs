@@ -102,10 +102,15 @@ void Get_Name(List<string> name)//метод вызывается при наж�
 	_button_swipe.GetComponent<Image>().enabled = false;	
 }
 
+
+
+bool was_metod = false;
+
    public  void Show_Money_Tree(int i){//метод который вызывается при изменении значения, 
 									// в зависимости от int переопределяет список
-	
-	_image_color = _ballon_UI.GetComponent<Image>().color;
+	if(was_metod == false)
+	{
+		_image_color = _ballon_UI.GetComponent<Image>().color;
 	_ballon_UI.GetComponent<Image>().color = Color.green;
 	_ballon_UI.GetComponent<Button>().onClick.AddListener(Image_Color);
 	
@@ -114,11 +119,16 @@ void Get_Name(List<string> name)//метод вызывается при наж�
 		text_for_metod_3.RemoveAt(0); //удаление элемента текста по индексу, которое не предполагает конвертирование в деньги.
 		Swipe_text(text_for_metod_3);//отображение текста,(первый это то что написано в инспекторе.
 		_metod_3 = false; //теперь этот метод не вызывается при изменении значений.
+		was_metod = true;//для того чтобы вызывася этот метод один раз
 	}
 	if(i == 0)
 	{
+		text_for_metod_3.RemoveAt(1);
 		Swipe_text(text_for_metod_3);
 	}
+	
+	}
+	
 		
    }
    
