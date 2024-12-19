@@ -22,9 +22,11 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	GameObject _button_swipe;
 	public static bool _metod_3 = false;
 	List<string> text_for_metod_3 = new List<string>();
-	
+	List<GameObject> _image_rotation = new List<GameObject>();
 	[SerializeField] Show_Island _Islans;
 	Color _image_color;
+	Camera _main;
+
 	
 	[SerializeField] GameObject _ballon_UI;
 	   public delegate void MyMethodDelegate(List<string> name); 
@@ -54,9 +56,30 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 			{3, Get_Name},
 			
 		};
+		   Image[] allImages = FindObjectsOfType<Image>();
+		   TMP_Text[] alltext = FindObjectsOfType<TMP_Text>();
 		
+		foreach (Image img in allImages)
+		{
+			 _image_rotation .Add(img.gameObject);
+		}
+		
+		foreach (TMP_Text img in alltext)
+		{
+			 _image_rotation .Add(img.gameObject);
+		}
+		_main = FindObjectOfType<Camera>();
+	}
+	void Update(){
+		foreach (var img in _image_rotation)
+		{
+			 img.transform.LookAt(_main.transform);
+			 img.transform.rotation = Quaternion.Euler(
+    		img.transform.rotation.eulerAngles.x,
+    		img.transform.rotation.eulerAngles.y + 180,
+    		img.transform.rotation.eulerAngles.z);
 
-		
+		}
 	}
 
 	public void InvokeMethod(int key, List<string> name)

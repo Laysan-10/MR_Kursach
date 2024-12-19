@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -59,6 +59,7 @@ public class Balloon_Place : MonoBehaviour
 		
 		
 		_skript_plane_movemant._end.GetComponent<MeshRenderer>().enabled = false;
+		_skript_plane_movemant._end_hand.GetComponent<MeshRenderer>().enabled = false;
 		// _socket_for_ballon.GetComponent<XRSocketInteractor>().enabled = true;
 		// _socket_for_ballon_2.GetComponent<XRSocketInteractor>().enabled = true;
 		_start_image.GetComponent<Image>().enabled = false;
@@ -84,6 +85,8 @@ public class Balloon_Place : MonoBehaviour
 		Debug.Log("Start");
 		
 			_skript_plane_movemant._end.GetComponent<MeshRenderer>().enabled = false;
+		_skript_plane_movemant._end_hand.GetComponent<MeshRenderer>().enabled = false;
+			
 		// 	_socket_for_ballon.GetComponent<XRSocketInteractor>().enabled = true;
 		// _socket_for_ballon_2.GetComponent<XRSocketInteractor>().enabled = true;
 		_start_image.GetComponent<Image>().enabled = true;//нкопка старт
@@ -104,6 +107,7 @@ public class Balloon_Place : MonoBehaviour
 	void Ballon_Move()//метод для того чтобы продолжить
 	{						//движение машиной с помощью кнопки 
 		_skript_plane_movemant._end.GetComponent<MeshRenderer>().enabled = true;
+		_skript_plane_movemant._end_hand.GetComponent<MeshRenderer>().enabled = true;
 		_start_image.GetComponent<Image>().enabled = false;//нкопка старт
 		_currentsocket.enabled = false;
 		_skript_plane_movemant.move_ballon = true;//возможность перемедвижения шара

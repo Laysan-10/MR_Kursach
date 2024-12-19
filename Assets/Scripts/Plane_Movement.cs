@@ -8,10 +8,12 @@ public class Plane_Movement : MonoBehaviour
 {
 	// GameObject xrRayInteractor;
 	Vector3 start_pos;
-	[SerializeField] XRRayInteractor xrRayInteractor;
-	[SerializeField] XRRayInteractor xrRayInteractor_Hand;
+	// [SerializeField] GameObject xrRayInteractor;
+	// [SerializeField] GameObject xrRayInteractor_Hand;
+	
 	[SerializeField] int _dist;
 	 public GameObject _end;
+	public GameObject _end_hand;
 Transform end_pos;
 	[SerializeField]
  	[Range(0.1f, 1f)]
@@ -35,11 +37,13 @@ Transform end_pos;
 
 	}
 
+
+
 	// Update is called once per frame
 
 	void Update()
 	{
-		if(xrRayInteractor.enabled == true)
+		if(_end== true)
 		{
 			if(move_ballon){
 	//_end.gameObject.transform.position = xrRayInteractor.transform.position + xrRayInteractor.transform.forward * 2;
@@ -58,8 +62,8 @@ else{
 		{
 			if(move_ballon){
 	//_end.gameObject.transform.position = xrRayInteractor_Hand.transform.position + xrRayInteractor_Hand.transform.forward * 2;
-	transform.position=Vector3.MoveTowards(transform.position,_end.gameObject.transform.position,speed/100);
-if(Vector3.Distance(transform.position, _end.gameObject.transform.position) >= 10)
+	transform.position=Vector3.MoveTowards(transform.position,_end_hand.gameObject.transform.position,speed/100);
+if(Vector3.Distance(transform.position, _end_hand.gameObject.transform.position) >= 10)
 {
 	speed = Mathf.Lerp(min_speed, max_speed, 1.5f);
 }
