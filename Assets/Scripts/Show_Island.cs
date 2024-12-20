@@ -107,6 +107,8 @@ GameObject _for_socket;
 		// _textmeshpro.transform.position = gameObjects_island[_island_index-1].transform.position + new Vector3(0, 50, 0);
 		// _button.transform.position = _textmeshpro.transform.position + new Vector3(24, -6, 18);
 		// //реализация роста деревьев
+		GameObject But_Forest = GameObject.Find("Forest");
+		But_Forest.GetComponent<Image>().enabled = true;
 _textmeshpro.GetComponent<TextMeshProUGUI>().text = name ;
  XRSocket = GameObject.Find("XR_Socket");
 XRSocket.GetComponent<MeshRenderer>().enabled  = true;

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems; 
 using TMPro;
 using System.Linq;
 [System.Serializable]
@@ -26,7 +27,13 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	[SerializeField] Show_Island _Islans;
 	Color _image_color;
 	Camera _main;
+	[SerializeField] AudioClip _click;
+	[SerializeField] AudioClip _hover;
+	[SerializeField] AudioSource _play_audio;
+	[SerializeField] Slider _click_slider;
 
+	Button _button_click;
+	private EventTrigger eventTrigger;
 	
 	[SerializeField] GameObject _ballon_UI;
 	   public delegate void MyMethodDelegate(List<string> name); 
@@ -58,11 +65,20 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 		};
 		   Image[] allImages = FindObjectsOfType<Image>();
 		   TMP_Text[] alltext = FindObjectsOfType<TMP_Text>();
+		   Button[] allbutton = FindObjectsOfType<Button>();
 		
 		foreach (Image img in allImages)
 		{
 			 _image_rotation .Add(img.gameObject);
+			 
 		}
+		foreach(Button but in allbutton)
+		{
+			but.onClick.AddListener(Click);
+			
+		}
+		
+		
 		
 		foreach (TMP_Text img in alltext)
 		{
@@ -70,16 +86,29 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 		}
 		_main = FindObjectOfType<Camera>();
 	}
+	 public void OnPointerEnter(PointerEventData eventData)
+	{
+		// Call your Hover method or perform actions on hover
+		Hover();
+	}
+	 void Click(){
+		_play_audio.PlayOneShot(_click);
+	 }
+	 void Hover(){
+		_play_audio.PlayOneShot(_hover);
+	 }
+	
 	void Update(){
 		foreach (var img in _image_rotation)
 		{
 			 img.transform.LookAt(_main.transform);
 			 img.transform.rotation = Quaternion.Euler(
-    		img.transform.rotation.eulerAngles.x,
-    		img.transform.rotation.eulerAngles.y + 180,
-    		img.transform.rotation.eulerAngles.z);
+			img.transform.rotation.eulerAngles.x,
+			img.transform.rotation.eulerAngles.y + 180,
+			img.transform.rotation.eulerAngles.z);
 
 		}
+		_play_audio.volume = _click_slider.value;
 	}
 
 	public void InvokeMethod(int key, List<string> name)
