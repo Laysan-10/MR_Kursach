@@ -25,6 +25,7 @@ public class Money : MonoBehaviour//логика которая отвечает
 				_play_logic.Show_Money_Tree(1);
 			}//вызывает метод, которое вызывает событие при опр цене.
 			}
+			Update_Tree_Ruda();
 		}
 	}
 	

@@ -55,16 +55,14 @@ if(Money.can_buy)
 				spawn_ballon_once = false;	
 }
 if(_onscene.name == "DRONE_Spawn" && GameObject.Find("Shop") == true && spawn_drone_once)
-{_money._money-=60;
+{
+	_money._money-=60;
 	_onscene.SetActive(true);
 				GameObject target = GameObject.Find("DRONE");
-				target.transform.position = _onscene.transform.position;
+				target.SetActive(true);
 	GameObject.Find("XR_Socket_Drone_Start").GetComponent<MeshRenderer>().enabled = true;
 	GameObject.Find("XR_Socket_Drone_End").GetComponent<MeshRenderer>().enabled = true;
 				spawn_drone_once = false;
-	// _onscene.GetComponent<Drone_Place>().Start_For_Spawn();
-	// GameObject.Find("XR_Socket_Drone_End").GetComponent<Drone_Place>().Start_For_Spawn();
-
 }
 Money.can_buy = false;
 }
