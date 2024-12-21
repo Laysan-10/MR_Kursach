@@ -26,7 +26,7 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	List<GameObject> _image_rotation = new List<GameObject>();
 	[SerializeField] Show_Island _Islans;
 	Color _image_color;
-	Camera _main;
+	[SerializeField]Camera _main;
 	[SerializeField] AudioClip _click;
 	[SerializeField] AudioClip _hover;
 	[SerializeField] AudioSource _play_audio;
@@ -69,7 +69,7 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 		
 		foreach (Image img in allImages)
 		{
-			 _image_rotation .Add(img.gameObject);
+			img.transform.LookAt(_main.transform);
 			 
 		}
 		foreach(Button but in allbutton)
@@ -80,12 +80,14 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 		
 		
 		
+		
 		foreach (TMP_Text img in alltext)
 		{
-			 _image_rotation .Add(img.gameObject);
+			img.transform.LookAt(_main.transform);
 		}
-		_main = FindObjectOfType<Camera>();
+		
 	}
+	[SerializeField] GameObject cub;
 	 public void OnPointerEnter(PointerEventData eventData)
 	{
 		// Call your Hover method or perform actions on hover
@@ -99,17 +101,41 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	 }
 	
 	void Update(){
-		foreach (var img in _image_rotation)
+				   Image[] allImages = FindObjectsOfType<Image>();
+		   TMP_Text[] alltext = FindObjectsOfType<TMP_Text>();
+		   foreach (TMP_Text img in alltext)
 		{
-			 img.transform.LookAt(_main.transform);
+			img.transform.LookAt(_main.transform);
 			 img.transform.rotation = Quaternion.Euler(
 			img.transform.rotation.eulerAngles.x,
 			img.transform.rotation.eulerAngles.y + 180,
 			img.transform.rotation.eulerAngles.z);
-
 		}
+		foreach (Image img in allImages)
+		{
+			img.transform.LookAt(_main.transform);
+			 img.transform.rotation = Quaternion.Euler(
+			img.transform.rotation.eulerAngles.x,
+			img.transform.rotation.eulerAngles.y + 180,
+			img.transform.rotation.eulerAngles.z);
+			 
+		}
+	// 	foreach (var img in _image_rotation)
+	// 	{
+	// 		 img.transform.LookAt(_main.transform);
+	// 		 img.transform.rotation = Quaternion.Euler(
+	// 		img.transform.rotation.eulerAngles.x,
+	// 		img.transform.rotation.eulerAngles.y + 180,
+	// 		img.transform.rotation.eulerAngles.z);
+	
+	
+	
+	// }
 		_play_audio.volume = _click_slider.value;
+	
 	}
+	
+	
 
 	public void InvokeMethod(int key, List<string> name)
 	{
@@ -156,7 +182,7 @@ void Get_Name(List<string> name)//метод вызывается при наж�
 
 
 
-bool was_metod = false;
+	bool was_metod = false;
 
    public  void Show_Money_Tree(int i){//метод который вызывается при изменении значения, 
 									// в зависимости от int переопределяет список
