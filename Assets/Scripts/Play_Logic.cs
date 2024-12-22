@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems; 
 using TMPro;
+using UnityEditor.SceneManagement;
 using System.Linq;
 [System.Serializable]
 public class Person
@@ -51,7 +52,11 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	void Method4(){}
 	void Method5(){}
 	
-
+public void Exit()
+{
+	Application.Quit();
+	Debug.Log("EXIT");
+}
 	public void button_click()//Метод считывает нажатие кнопки.
 	{
 		if(people.Count > i)
@@ -199,7 +204,7 @@ IEnumerator MyCorutine(List<string> name)
 	for(int i = 0; i < name.Count -1; i++)
 	{
 			_text_swipe.GetComponent<TextMeshProUGUI>().text = name[i];
-		yield return new WaitForSeconds(.4f);
+		yield return new WaitForSeconds(4f);
 			
 	}
 			

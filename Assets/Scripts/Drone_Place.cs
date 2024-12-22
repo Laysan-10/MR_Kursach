@@ -142,7 +142,10 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 		ReturnToWorld();//объект не является дочерним
 		_image_start.GetComponent<Image>().enabled = false;
 		_image_start.SetActive(false); 
-	
+		
+		GameObject _socket = GameObject.Find("XR_Socket");
+		_socket.GetComponent<MeshRenderer>().enabled = true;
+			 
 		_island.SetActive(true);
 		 _market.SetActive(false);
 		// GameObject.Find("Grab").transform.position = current_position_grab.transform.position;
@@ -169,6 +172,9 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 	{
 		yield return new WaitForSeconds(1);
 			 SetAsChild();
+			 
+			 GameObject _rope = GameObject.Find("XR_Socket");
+			 _rope.GetComponent<MeshRenderer>().enabled = false;
 	 _market.SetActive(true);
 		// GameObject.Find("Grab").transform.position = transform.position + new Vector3(0, -2, 0);
 			
