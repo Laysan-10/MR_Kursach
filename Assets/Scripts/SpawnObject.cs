@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class SpawnObject : MonoBehaviour
 {
+	[SerializeField] GameObject target;
 	GameObject _ob;
 	public Vector3 x;
 	public int y;
@@ -58,13 +59,20 @@ if(_onscene.name == "DRONE_Spawn" && GameObject.Find("Shop") == true && spawn_dr
 {
 	_money._money-=60;
 	_onscene.SetActive(true);
-				GameObject target = GameObject.Find("DRONE");
+				
 				target.SetActive(true);
 	GameObject.Find("XR_Socket_Drone_Start").GetComponent<MeshRenderer>().enabled = true;
 	GameObject.Find("XR_Socket_Drone_End").GetComponent<MeshRenderer>().enabled = true;
 				spawn_drone_once = false;
 }
+if(_onscene.name == "House6")
+{
+	_money._money-=100;_onscene.SetActive(true);
+}
+	
 Money.can_buy = false;
+
+
 }
 
 

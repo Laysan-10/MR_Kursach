@@ -65,7 +65,7 @@ public class Money : MonoBehaviour//логика которая отвечает
 	{
 		can_buy = false;
 		_play_logic = FindFirstObjectByType<Play_Logic>();
-		_Money = 120;
+		_Money = 60;
 		_Tree = 0;
 		
 		//Запись значений цены в соот. поля.

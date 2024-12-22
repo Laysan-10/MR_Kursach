@@ -58,17 +58,21 @@ public class Drone_Place : MonoBehaviour
 
 public void End_Pos_Dron(BaseInteractionEventArgs args){
 	
-		
+		_image_start.SetActive(true);
 		_socket_for_drone.GetComponent<XRSocketInteractor>().enabled = true;//включение начальной позиции
 		droneController.activated = false;
 		_image_start.GetComponent<Image>().enabled = true;
 		Debug.Log("END");
+		
+		
 		// initialPosition = _socket_for_drone_2.transform.position;
 		// initialRotation = _socket_for_drone_2.gameObject.transform.rotation;
 		// initialParent = gameObject.transform.parent;
 	
 	}
 	public void Not_End_Pos_Drone(BaseInteractionEventArgs args){
+		_image_start.SetActive(true);
+		
 		_socket_for_drone_2.GetComponent<XRSocketInteractor>().enabled = true;
 		droneController.activated = false;
 		Debug.Log("START	");
@@ -120,6 +124,8 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 	{
 		
 		_image_start.GetComponent<Image>().enabled = false;
+		_image_start.SetActive(false);
+		
 		 SetAsChild();	//объект становится дочерним
 			_market.SetActive(true);
 		_island.SetActive(false);
@@ -131,6 +137,7 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 	{
 		ReturnToWorld();//объект не является дочерним
 		_image_start.GetComponent<Image>().enabled = false;
+		_image_start.SetActive(false);
 		_island.SetActive(true);
 		_market.SetActive(false);
 		

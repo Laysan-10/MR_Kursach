@@ -33,13 +33,20 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	[SerializeField] Slider _click_slider;
 
 	Button _button_click;
-	private EventTrigger eventTrigger;
 	
+	[SerializeField] GameObject _button_house;
+	private EventTrigger eventTrigger;
+	bool _about_house; 
+	Image[] allImages;
+	TMP_Text[] alltext;
 	[SerializeField] GameObject _ballon_UI;
 	   public delegate void MyMethodDelegate(List<string> name); 
 	void Method1(){}//сюда заносим метод из другого скрипта
 	void Method2(){}
 	void Method3(){}
+	void Method4(){}
+	void Method5(){}
+	
 
 	public void button_click()//Метод считывает нажатие кнопки.
 	{
@@ -61,30 +68,44 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 			{ 1, _Islans.Show_Logic},//для того чтобы показывать острова и менять текст.
 			{ 2, Swipe_text},//для того чтобы только менять текст.
 			{3, Get_Name},
+		{4, Hide_Image},
+		{5, About_House}
 			
 		};
-		   Image[] allImages = FindObjectsOfType<Image>();
-		   TMP_Text[] alltext = FindObjectsOfType<TMP_Text>();
-		   Button[] allbutton = FindObjectsOfType<Button>();
+		 Image[] allImages = FindObjectsOfType<Image>();
+		 TMP_Text[] alltext = FindObjectsOfType<TMP_Text>();
+		   Button[] allbutton = FindObjectsOfType<Button>(true);
 		
-		foreach (Image img in allImages)
-		{
-			img.transform.LookAt(_main.transform);
+		// foreach (Image img in allImages)
+		// {
+		// 	img.transform.LookAt(_main.transform);
+		// 	if(img.name != "NO"){
+		// 		img.transform.LookAt(_main.transform);
+		// 	 img.transform.rotation = Quaternion.Euler(
+		// 	img.transform.rotation.eulerAngles.x,
+		// 	img.transform.rotation.eulerAngles.y + 180,
+		// 	img.transform.rotation.eulerAngles.z);
+		// 	}
 			 
-		}
+		// }
 		foreach(Button but in allbutton)
 		{
 			but.onClick.AddListener(Click);
 			
 		}
 		
-		
-		
-		
-		foreach (TMP_Text img in alltext)
-		{
-			img.transform.LookAt(_main.transform);
-		}
+	
+		// foreach (TMP_Text img in alltext)
+		// {
+		// 	img.transform.LookAt(_main.transform);
+		// 	if(img.name != "NO"){
+		// 		img.transform.LookAt(_main.transform);
+		// 	 img.transform.rotation = Quaternion.Euler(
+		// 	img.transform.rotation.eulerAngles.x,
+		// 	img.transform.rotation.eulerAngles.y + 180,
+		// 	img.transform.rotation.eulerAngles.z);
+		// 	}
+		// }
 		
 	}
 	[SerializeField] GameObject cub;
@@ -101,25 +122,34 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	 }
 	
 	void Update(){
-				   Image[] allImages = FindObjectsOfType<Image>();
+		  Image[] allImages = FindObjectsOfType<Image>();
 		   TMP_Text[] alltext = FindObjectsOfType<TMP_Text>();
-		   foreach (TMP_Text img in alltext)
+		
+		  foreach (Image img in allImages)
 		{
-			img.transform.LookAt(_main.transform);
+			
+			if(img.name != "NO"){img.transform.LookAt(_main.transform);
+				img.transform.LookAt(_main.transform);
 			 img.transform.rotation = Quaternion.Euler(
 			img.transform.rotation.eulerAngles.x,
 			img.transform.rotation.eulerAngles.y + 180,
 			img.transform.rotation.eulerAngles.z);
-		}
-		foreach (Image img in allImages)
-		{
-			img.transform.LookAt(_main.transform);
-			 img.transform.rotation = Quaternion.Euler(
-			img.transform.rotation.eulerAngles.x,
-			img.transform.rotation.eulerAngles.y + 180,
-			img.transform.rotation.eulerAngles.z);
+			}
 			 
 		}
+		foreach (TMP_Text img in alltext)
+		{
+			
+			if(img.name != "NO"){img.transform.LookAt(_main.transform);
+				img.transform.LookAt(_main.transform);
+			 img.transform.rotation = Quaternion.Euler(
+			img.transform.rotation.eulerAngles.x,
+			img.transform.rotation.eulerAngles.y + 180,
+			img.transform.rotation.eulerAngles.z);
+			}
+		}
+			 
+		
 	// 	foreach (var img in _image_rotation)
 	// 	{
 	// 		 img.transform.LookAt(_main.transform);
@@ -163,7 +193,7 @@ IEnumerator MyCorutine(List<string> name)
 	for(int i = 0; i < name.Count -1; i++)
 	{
 			_text_swipe.GetComponent<TextMeshProUGUI>().text = name[i];
-		yield return new WaitForSeconds(.5f);
+		yield return new WaitForSeconds(4f);
 			
 	}
 			
@@ -213,5 +243,19 @@ void Get_Name(List<string> name)//метод вызывается при наж�
    void Image_Color(){//возвращает цвет кнопки в исходное.
 	_ballon_UI.GetComponent<Image>().color = _image_color;
 	Debug.Log("Spawn_BalLon");
+	_button_house.GetComponent<Image>().color = _image_color;
+   }
+   
+   public void Hide_Image(List<string> name){
+	GameObject _but = GameObject.Find("House_Button");
+	_but.GetComponent<Image>().enabled = false;
+   }
+   
+   void About_House(List<string> name){
+	_image_color = _button_house.GetComponent<Image>().color;
+	Swipe_text(name);
+	_button_house.GetComponent<Image>().color = Color.green;
+	_button_house.GetComponent<Button>().onClick.AddListener(Image_Color);
+	
    }
 }

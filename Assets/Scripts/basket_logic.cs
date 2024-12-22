@@ -6,6 +6,8 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class basket_logic : MonoBehaviour
 {
+	GameObject _audio;
+	[SerializeField] AudioClip _buy;
 	Money _money;
 	void OnTriggerStay(Collider other)
 	{
@@ -18,6 +20,7 @@ public class basket_logic : MonoBehaviour
 				if(int.Parse(other.name) <=_money._money  ){
 				_money._money = _money._money -  int.Parse(other.name);
 				_money.Update_Tree_Ruda();
+				_audio.GetComponent<AudioSource>().PlayOneShot(_buy);
 				Destroy(other.gameObject);
 				}
 				
@@ -27,5 +30,7 @@ public class basket_logic : MonoBehaviour
 	}
 	void Start(){
 	_money = FindObjectOfType<Money>();
+	_audio = GameObject.Find("AUDIO_CLICK");
+	_audio.GetComponent<AudioSource>();
 	}
 }
