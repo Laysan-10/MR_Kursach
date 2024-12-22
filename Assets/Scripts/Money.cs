@@ -19,7 +19,7 @@ public class Money : MonoBehaviour//логика которая отвечает
 			if(_Money != value){
 					_Money = value;
 					// Debug.Log("Update_Money");	
-					 if(Play_Logic._metod_3 && value >= 20)
+					 if(Play_Logic._metod_3 && value >= 40)
 			{
 				// Debug.Log("Money - Show_Money_Tree(0)");
 				_play_logic.Show_Money_Tree(1);
@@ -65,7 +65,7 @@ public class Money : MonoBehaviour//логика которая отвечает
 	{
 		can_buy = false;
 		_play_logic = FindFirstObjectByType<Play_Logic>();
-		_Money = 60;
+		_Money = 40;
 		_Tree = 0;
 		
 		//Запись значений цены в соот. поля.

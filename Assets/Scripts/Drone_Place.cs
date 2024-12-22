@@ -122,27 +122,56 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 	
 	 void OnEnablee()
 	{
-		
-		_image_start.GetComponent<Image>().enabled = false;
-		_image_start.SetActive(false);
+		 
+		if(_balon!= null)
+		{
+			_balon.SetActive(false);
+		}
+		if(_rope!= null)
+		{
+			_rope.SetActive(false);
+		}
 		
 		 SetAsChild();	//объект становится дочерним
-			_market.SetActive(true);
-		_island.SetActive(false);
+		_image_start.GetComponent<Image>().enabled = false;
+		_image_start.SetActive(false);
+		StartCoroutine(Wait());
+		
+		// 	_market.SetActive(true);
+		// _island.SetActive(false);
 		// 	initialPosition = gameObject.transform.position;
 		// initialRotation = gameObject.transform.rotation;
 	}
 	
 	void Show_Island()
 	{
+		
 		ReturnToWorld();//объект не является дочерним
 		_image_start.GetComponent<Image>().enabled = false;
-		_image_start.SetActive(false);
+		_image_start.SetActive(false); 
+		StartCoroutine(Wait());
 		_island.SetActive(true);
 		_market.SetActive(false);
+	if(_balon!= null)
+	{
+		_balon.SetActive(true);
+	}
+		if(_rope != null)
+		{
+			_rope.SetActive(true);
+		}
+		
 		
 		 StartCoroutine(Want_EAT());
 	
+	}
+	GameObject _balon ;
+	GameObject _rope ;
+	
+	
+	IEnumerator Wait()
+	{
+		yield return new WaitForSeconds(1);
 	}
 
 	int _meat = 0;
@@ -155,6 +184,9 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 	
 	void Start()
 	{
+		_rope = GameObject.Find("rope_bridge(Clone)");
+		 _balon = GameObject.Find("air_balloon_red");
+		
 		 // Сохраняем начальные значения
 		initialPosition = gameObject.transform.position;
 		initialRotation = gameObject.transform.rotation;

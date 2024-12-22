@@ -15,6 +15,8 @@ public class Show_Island : MonoBehaviour//прописать логику диа
 	
 GameObject XRSocket;
 GameObject _for_socket;
+GameObject _audio;
+[SerializeField] AudioClip _show_isl_clip;
 	
 	GameObject _human;
  int _island_index = 1;
@@ -39,6 +41,8 @@ GameObject _for_socket;
 			{ 5, City },
 
 		};
+		_audio  = GameObject.Find("AUDIO_CLICK");
+		
 
 
 
@@ -71,6 +75,7 @@ GameObject _for_socket;
 		if (All_Island.TryGetValue(_island_index, out sh_island method))//вызов метода
 		{
 			method(name[0]);
+			// _audio.GetComponent<AudioSource>().PlayOneShot(_show_isl_clip);
 
 
 		}
@@ -84,7 +89,7 @@ GameObject _for_socket;
 	}
 	public void House(string name)//когда пользователь нажимает на начать, то появляется остров и остальная логика для показа ui
 	{
-		
+		_audio.GetComponent<AudioSource>().PlayOneShot(_show_isl_clip);
 		gameObjects_island[_island_index -1].gameObject.SetActive(true);//активирует отображение острова
 		//логика персонажа, возможно передача идекса массива для того чтобы правильно выбирать фразы т.е метод
 		//включить звуки и анимацию
@@ -102,6 +107,7 @@ GameObject _for_socket;
 	
 	public void Forest(string name)//реализция логики получения денег
 	{
+	_audio.GetComponent<AudioSource>().PlayOneShot(_show_isl_clip);
 			Debug.Log("Forest()");
 		gameObjects_island[_island_index-1].gameObject.SetActive(true);//отображение острова
 		// _textmeshpro.transform.position = gameObjects_island[_island_index-1].transform.position + new Vector3(0, 50, 0);
@@ -121,12 +127,14 @@ _for_socket =  GameObject.Find("FOR_SOCKET");
 	
 	void City(string name)
 	{
+	_audio.GetComponent<AudioSource>().PlayOneShot(_show_isl_clip);
 		gameObjects_island[_island_index-1].gameObject.SetActive(true);
 	}
 
 
 	void Sand_city(string name)
 	{
+	_audio.GetComponent<AudioSource>().PlayOneShot(_show_isl_clip);
 		gameObjects_island[_island_index-1].gameObject.SetActive(true);
 		
 		// GameObject ballon = GameObject.Find("60");
@@ -136,6 +144,7 @@ _for_socket =  GameObject.Find("FOR_SOCKET");
 
 	public void Snow_city(string name)
 	{
+	_audio.GetComponent<AudioSource>().PlayOneShot(_show_isl_clip);
 	gameObjects_island[_island_index-1].gameObject.SetActive(true);
 		//если появляется этот остров, то можно купить воздушный шар
 		// GameObject ballon = GameObject.Find("40");

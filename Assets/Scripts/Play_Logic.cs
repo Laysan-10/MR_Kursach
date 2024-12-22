@@ -31,6 +31,10 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	[SerializeField] AudioClip _hover;
 	[SerializeField] AudioSource _play_audio;
 	[SerializeField] Slider _click_slider;
+	
+	[SerializeField] AudioSource _music_audio;
+	[SerializeField] Slider _music_slider;
+
 
 	Button _button_click;
 	
@@ -162,6 +166,7 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	
 	// }
 		_play_audio.volume = _click_slider.value;
+		_music_audio.volume = _music_slider.value;
 	
 	}
 	
@@ -231,7 +236,7 @@ void Get_Name(List<string> name)//метод вызывается при наж�
 	}
 	if(i == 0)
 	{
-		text_for_metod_3.RemoveAt(1);
+		
 		Swipe_text(text_for_metod_3);
 	}
 	
@@ -248,7 +253,9 @@ void Get_Name(List<string> name)//метод вызывается при наж�
    
    public void Hide_Image(List<string> name){
 	GameObject _but = GameObject.Find("House_Button");
+	Swipe_text(name);
 	_but.GetComponent<Image>().enabled = false;
+	
    }
    
    void About_House(List<string> name){
