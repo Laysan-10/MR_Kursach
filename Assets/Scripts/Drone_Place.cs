@@ -17,8 +17,8 @@ public class Drone_Place : MonoBehaviour
 	[SerializeField] UnityEngine.XR.Content.Interaction.XRPushButton  _button;
 		[SerializeField] Button _image_end;
 	[SerializeField] GameObject _image_start;
-	
-	bool _was_start = false;
+		Transform current_position_grab;
+			bool _was_start = false;
 	bool _isend=false;
 	int i;
 		XRSocketInteractor _current_socket;
@@ -27,7 +27,7 @@ public class Drone_Place : MonoBehaviour
 	private Quaternion initialRotation; // Начальная ориентация дочернего объекта
 	private Transform initialParent; // Начальный родитель объекта
 
-	
+	private Transform _size_drone;
 	   
 
 	// Метод для установки объекта дочерним
@@ -52,7 +52,8 @@ public class Drone_Place : MonoBehaviour
 		gameObject.transform.rotation = initialRotation;
 
 		// Можно вернуть исходного родителя
-		gameObject.transform.SetParent(initialParent);
+		// gameObject.transform.SetParent(initialParent);
+		gameObject.transform.localScale = _size_drone.localScale;
 	}
 
 
@@ -80,15 +81,7 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 		// initialParent = gameObject.transform.parent;
 	
 	}
-// 	void Not_End_Pos(BaseInteractionEventArgs args){//событие если дрон дошел до конечной точки
-// 		_isend=true;
-// StartCoroutine(Time_Get_Meat());
-// 	}
-	
-// 	void End_Pos(BaseInteractionEventArgs args){//событие если дрон дошел до стартовой точки
-// 		_isend=false;
-// StartCoroutine(Time_Get_Meat());
-// 	}
+
 	
 	
 	 void Drone_Move()//метод для того чтобы продолжить
@@ -132,11 +125,11 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 			_rope.SetActive(false);
 		}
 		
-		 SetAsChild();	//объект становится дочерним
+	//объект становится дочерним
 		_image_start.GetComponent<Image>().enabled = false;
 		_image_start.SetActive(false);
 		StartCoroutine(Wait());
-		
+			
 		// 	_market.SetActive(true);
 		// _island.SetActive(false);
 		// 	initialPosition = gameObject.transform.position;
@@ -149,9 +142,12 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 		ReturnToWorld();//объект не является дочерним
 		_image_start.GetComponent<Image>().enabled = false;
 		_image_start.SetActive(false); 
-		StartCoroutine(Wait());
+	
 		_island.SetActive(true);
-		_market.SetActive(false);
+		 _market.SetActive(false);
+		// GameObject.Find("Grab").transform.position = current_position_grab.transform.position;
+		
+		
 	if(_balon!= null)
 	{
 		_balon.SetActive(true);
@@ -172,6 +168,11 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 	IEnumerator Wait()
 	{
 		yield return new WaitForSeconds(1);
+			 SetAsChild();
+	 _market.SetActive(true);
+		// GameObject.Find("Grab").transform.position = transform.position + new Vector3(0, -2, 0);
+			
+		_island.SetActive(false);
 	}
 
 	int _meat = 0;
@@ -184,13 +185,16 @@ public void End_Pos_Dron(BaseInteractionEventArgs args){
 	
 	void Start()
 	{
+		//  current_position_grab = GameObject.Find("Grab").transform;
 		_rope = GameObject.Find("rope_bridge(Clone)");
 		 _balon = GameObject.Find("air_balloon_red");
+		_size_drone = gameObject.transform;
+		
 		
 		 // Сохраняем начальные значения
 		initialPosition = gameObject.transform.position;
 		initialRotation = gameObject.transform.rotation;
-		initialParent = gameObject.transform.parent;
+		// initialParent = gameObject.transform.parent;
 	
 		_want_meat = GameObject.Find("MEAT");//для того чтобы показать что игрок хочет кушать.
 		_want_meat.GetComponent<Image>().enabled = false;

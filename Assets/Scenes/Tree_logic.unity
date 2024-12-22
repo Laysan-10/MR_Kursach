@@ -472,7 +472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 40429127}
   m_Layer: 5
-  m_Name: DRONE_Spawn
+  m_Name: DRONE_Spawn_empty
   m_TagString: DRONE
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -490,8 +490,7 @@ Transform:
   m_LocalPosition: {x: 379.951, y: 186.978, z: -70.739}
   m_LocalScale: {x: 0.39192, y: 0.14156148, z: 0.39192006}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 654392866}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &55220443
@@ -3353,10 +3352,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8662456345982762589}
-  - {fileID: 1341199021}
   - {fileID: 852320679}
   - {fileID: 1947221263}
   - {fileID: 702663169}
+  - {fileID: 1341199021}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &446061243
@@ -6137,6 +6136,7 @@ MonoBehaviour:
   _click_slider: {fileID: 120075626770292388}
   _music_audio: {fileID: 1633996047}
   _music_slider: {fileID: 7774863904593285451}
+  _drab: {fileID: 1297166454429313735}
   _button_house: {fileID: 1244608654}
   _ballon_UI: {fileID: 1272203905}
   cub: {fileID: 732970459}
@@ -9714,8 +9714,8 @@ Transform:
   m_GameObject: {fileID: 1341199015}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7347561, z: -0, w: 0.67833143}
-  m_LocalPosition: {x: 0.002, y: -1.305, z: -3.134}
-  m_LocalScale: {x: 0.13806164, y: 0.12903932, z: 0.17233919}
+  m_LocalPosition: {x: 0.0020141602, y: -1.3049927, z: -3.1340027}
+  m_LocalScale: {x: 0.13806167, y: 0.12903932, z: 0.1723392}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1159019991}
@@ -13124,7 +13124,7 @@ MonoBehaviour:
         m_MethodName: Invoke_Gameobject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 40429126}
+          m_ObjectArgument: {fileID: 654392860}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -15464,31 +15464,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 40429127}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 263621344681038928, guid: 447c393aa77a6f049935c64e91c279e3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.10073276
+      value: 0.03947918
       objectReference: {fileID: 0}
     - target: {fileID: 263621344681038928, guid: 447c393aa77a6f049935c64e91c279e3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.27888352
+      value: 0.039479163
       objectReference: {fileID: 0}
     - target: {fileID: 263621344681038928, guid: 447c393aa77a6f049935c64e91c279e3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.10073274
+      value: 0.03947918
       objectReference: {fileID: 0}
     - target: {fileID: 263621344681038928, guid: 447c393aa77a6f049935c64e91c279e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.203
+      value: 379.47952
       objectReference: {fileID: 0}
     - target: {fileID: 263621344681038928, guid: 447c393aa77a6f049935c64e91c279e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.126
+      value: 186.99583
       objectReference: {fileID: 0}
     - target: {fileID: 263621344681038928, guid: 447c393aa77a6f049935c64e91c279e3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.623
+      value: -70.98316
       objectReference: {fileID: 0}
     - target: {fileID: 263621344681038928, guid: 447c393aa77a6f049935c64e91c279e3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15540,7 +15540,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 23eae05274120ce46a6abaf5863c8f34, type: 2}
     - target: {fileID: 4108781075853812623, guid: 447c393aa77a6f049935c64e91c279e3, type: 3}
       propertyPath: m_Name
-      value: Drone_red (2)
+      value: DRONE_Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108781075853812623, guid: 447c393aa77a6f049935c64e91c279e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5084332037989398217, guid: 447c393aa77a6f049935c64e91c279e3, type: 3}
       propertyPath: m_Mesh
@@ -56681,7 +56685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1297427887481534785
 GameObject:
   m_ObjectHideFlags: 0
@@ -95140,6 +95144,7 @@ MonoBehaviour:
   _click_slider: {fileID: 0}
   _music_audio: {fileID: 0}
   _music_slider: {fileID: 0}
+  _drab: {fileID: 0}
   _button_house: {fileID: 0}
   _ballon_UI: {fileID: 0}
   cub: {fileID: 0}
@@ -108620,7 +108625,7 @@ Transform:
   m_GameObject: {fileID: 1297166454429313735}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 378.16, y: 186.382, z: -69.551}
+  m_LocalPosition: {x: 379.95, y: 186.382, z: -68.63}
   m_LocalScale: {x: 0.38771594, y: 0.38771594, z: 0.38771594}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -191402,7 +191407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prebaf_tree: {fileID: 2193972946347193766, guid: 3e485de8c926c8e40b046b351ef92c44, type: 3}
   _forest: {fileID: 8633526972227846705}
-  check: 0
+  check: 1
 --- !u!33 &5854460335132093345
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -304613,6 +304618,7 @@ SceneRoots:
   - {fileID: 1874428141}
   - {fileID: 1760457182}
   - {fileID: 3063903367746757555}
+  - {fileID: 1881707377}
   - {fileID: 40429127}
   - {fileID: 436327552}
   - {fileID: 240088886}

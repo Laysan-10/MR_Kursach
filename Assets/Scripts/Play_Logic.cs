@@ -35,7 +35,7 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 	[SerializeField] AudioSource _music_audio;
 	[SerializeField] Slider _music_slider;
 
-
+	[SerializeField] GameObject _drab;
 	Button _button_click;
 	
 	[SerializeField] GameObject _button_house;
@@ -76,10 +76,11 @@ public class Play_Logic : MonoBehaviour//связь чисел и методов
 		{5, About_House}
 			
 		};
+		
 		 Image[] allImages = FindObjectsOfType<Image>();
 		 TMP_Text[] alltext = FindObjectsOfType<TMP_Text>();
 		   Button[] allbutton = FindObjectsOfType<Button>(true);
-		
+		_drab.SetActive(false);
 		// foreach (Image img in allImages)
 		// {
 		// 	img.transform.LookAt(_main.transform);
@@ -198,7 +199,7 @@ IEnumerator MyCorutine(List<string> name)
 	for(int i = 0; i < name.Count -1; i++)
 	{
 			_text_swipe.GetComponent<TextMeshProUGUI>().text = name[i];
-		yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(.4f);
 			
 	}
 			
