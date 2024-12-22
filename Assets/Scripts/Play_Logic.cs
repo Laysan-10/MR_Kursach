@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems; 
 using TMPro;
-using UnityEditor.SceneManagement;
-using System.Linq;
+
+
 [System.Serializable]
 public class Person
 {
